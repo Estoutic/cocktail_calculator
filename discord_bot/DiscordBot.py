@@ -2,12 +2,20 @@ import asyncio
 
 import discord as discord
 
+from cocktails.Hirosima import Hirosima
+from command.Menu import Menu
+from command.base.Command import Command
+from command.base.stock import Stock
+
 
 class DiscordBot(discord.Client):
     def __init__(self, prefix: str):
         super().__init__()
         self.commands = {}
         self.prefix = prefix
+        self.menu = {}
+        self.register_command(Menu(self.menu, self.prefix))
+        self.add_to_menu(Hirosima())
 
     async def on_ready(self):
         print('Logged on as', self.user)
@@ -44,3 +52,5 @@ class DiscordBot(discord.Client):
     def register_command(self, command: Command):
         self.commands[command.get_name()] = command
 
+    def add_to_menu(self, stock: Stock):
+        self.menu[stock.get_name()] = stock

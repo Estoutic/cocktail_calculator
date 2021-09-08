@@ -9,7 +9,7 @@ class DbConnectionManager():
         self.sql = self.db.cursor()
         self.url_repo = UrlsBdRepository(self.db)
         self.sql.execute("""CREATE TABLE IF NOT EXISTS users (
-            url TEXT,
+            
             
         ) """)
 
