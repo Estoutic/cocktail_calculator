@@ -15,6 +15,7 @@ class Menu(Command):
         embed.add_field(name="special menu from Estoutic",
                         value="https://github.com/Estoutic/cocktail_calculator",
                         inline=False, )
+
         for key in self.menu:
             embed.add_field(name=self.menu[key].get_name(), value=self.menu[key].get_description(), inline=False)
 
